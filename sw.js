@@ -1,5 +1,5 @@
-const CACHE='trip-planner-v3';
-const APP_FILES=['./','./index.html','./styles.css?v=3','./app.js?v=3','./manifest.webmanifest'];
+const CACHE='trip-planner-v6';
+const APP_FILES=['./','./index.html','./styles.css?v=6','./app.js?v=4','./day-controls.js?v=5','./trip-mode.js?v=6','./manifest.webmanifest'];
 
 self.addEventListener('install',event=>{
   self.skipWaiting();
