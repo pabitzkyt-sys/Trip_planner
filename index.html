@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#215b49" />
   <title>My Branson Trip</title>
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <header class="topbar">
@@ -50,6 +50,22 @@
     </section>
   </main>
 
+  <dialog id="dayPickerDialog">
+    <div class="dialog-card day-picker-card">
+      <button id="closeDayPicker" class="close" aria-label="Close">✕</button>
+      <h2 id="dayPickerTitle">Choose a day</h2>
+      <p id="dayPickerHelp" class="small">Tap the day you want.</p>
+      <div class="day-button-grid">
+        <button class="day-button" data-day="Wednesday">Wednesday</button>
+        <button class="day-button" data-day="Thursday">Thursday</button>
+        <button class="day-button" data-day="Friday">Friday</button>
+        <button class="day-button" data-day="Saturday">Saturday</button>
+        <button class="day-button" data-day="Sunday">Sunday</button>
+        <button class="day-button extra-day" data-day="Extra">Extra Stops</button>
+      </div>
+    </div>
+  </dialog>
+
   <dialog id="detailsDialog"><form method="dialog" class="dialog-card">
     <button class="close" aria-label="Close">✕</button><h2 id="detailName">Place details</h2><p id="detailAddress" class="small"></p>
     <label>Day<select id="detailDay"><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option><option>Extra</option></select></label>
@@ -69,5 +85,6 @@
   </form></dialog>
 
   <script src="app.js?v=4"></script>
+  <script src="day-controls.js?v=5"></script>
 </body>
 </html>
