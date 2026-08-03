@@ -4,85 +4,69 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#215b49" />
-  <title>My Trip</title>
+  <title>My Branson Trip</title>
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
-    <div>
-      <p class="eyebrow">TRIP PLANNER</p>
-      <h1 id="tripTitle">My Branson Trip</h1>
-    </div>
+    <div><p class="eyebrow">TRIP PLANNER</p><h1 id="tripTitle">My Branson Trip</h1></div>
     <button id="settingsBtn" class="icon-btn" aria-label="Settings">⚙️</button>
   </header>
 
   <main>
     <section class="hero-card">
       <label for="cityInput">Where are we going?</label>
-      <div class="search-row">
-        <input id="cityInput" value="Branson, Missouri" autocomplete="off" />
-        <button id="setCityBtn" class="primary">Go</button>
+      <div class="search-row"><input id="cityInput" value="Branson, Missouri" autocomplete="off" /><button id="setCityBtn" class="primary">Go</button></div>
+      <p id="cityStatus" class="small">Search for a place, then tap Add.</p>
+    </section>
+
+    <section class="card reservation-card">
+      <div class="section-head"><div><h2>🏨 Hotel reservation</h2><p class="small">Saved only on this device—not in the public GitHub repository.</p></div><span class="secure">Private</span></div>
+      <div class="reservation-grid">
+        <label>Hotel<input id="hotelName" value="Grand Country Resort" /></label>
+        <label>Guest name<input id="guestName" placeholder="Guest name" /></label>
+        <label>Itinerary number<input id="itineraryNumber" placeholder="Enter confirmation number" /></label>
+        <label>Room confirmation<input id="roomConfirmation" placeholder="Enter room confirmation" /></label>
+        <label>Check-in<input id="checkIn" type="date" /></label>
+        <label>Check-out<input id="checkOut" type="date" /></label>
       </div>
-      <p id="cityStatus" class="small">Search for fun places, then tap Add.</p>
+      <button id="saveReservationBtn" class="primary full">Save Reservation</button>
+      <a class="secondary full link-button" href="tel:18885141088">📞 Call Grand Country</a>
+      <a class="secondary full link-button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Grand+Country+Resort+1945+W+76+Country+Blvd+Branson+MO">📍 Open Hotel Map</a>
     </section>
 
     <section class="card">
-      <h2>1. Find a place</h2>
-      <div class="search-row">
-        <input id="placeInput" placeholder="Try: magic show, museum, restaurant" autocomplete="off" />
-        <button id="searchBtn" class="primary">Search</button>
-      </div>
+      <h2>🔎 Find another place</h2>
+      <div class="search-row"><input id="placeInput" placeholder="Try: pizza, museum, magic show" autocomplete="off" /><button id="searchBtn" class="primary">Search</button></div>
       <div id="results" class="results" aria-live="polite"></div>
     </section>
 
     <section class="card">
-      <div class="section-head">
-        <div>
-          <h2>2. My stops</h2>
-          <p class="small">Tap Optimize to put them in the easiest driving order.</p>
-        </div>
-        <span id="stopCount" class="count">0</span>
-      </div>
-      <div id="stops" class="stops empty">No stops yet.</div>
-      <button id="optimizeBtn" class="big-action" disabled>✨ Optimize My Route</button>
-      <button id="openRouteBtn" class="secondary full" disabled>🗺️ Open Route in Google Maps</button>
+      <div class="section-head"><div><h2>🗓️ Our itinerary</h2><p class="small">Everything planned for Wednesday through Sunday.</p></div><span id="stopCount" class="count">0</span></div>
+      <div id="stops" class="stops empty">Loading itinerary…</div>
+      <button id="optimizeBtn" class="big-action">✨ Put Stops in Best Driving Order</button>
+      <button id="openRouteBtn" class="secondary full">🗺️ Open Route in Google Maps</button>
     </section>
   </main>
 
-  <dialog id="detailsDialog">
-    <form method="dialog" class="dialog-card">
-      <button class="close" aria-label="Close">✕</button>
-      <h2 id="detailName">Place details</h2>
-      <p id="detailAddress" class="small"></p>
-      <label>Phone
-        <input id="detailPhone" placeholder="Phone number" />
-      </label>
-      <label>Website or ticket page
-        <input id="detailWebsite" placeholder="https://..." />
-      </label>
-      <label>Ticket price
-        <input id="detailPrice" placeholder="Example: Adults $29, Kids $18" />
-      </label>
-      <button id="saveDetailsBtn" value="default" class="primary full">Save</button>
-    </form>
-  </dialog>
+  <dialog id="detailsDialog"><form method="dialog" class="dialog-card">
+    <button class="close" aria-label="Close">✕</button><h2 id="detailName">Place details</h2><p id="detailAddress" class="small"></p>
+    <label>Day<select id="detailDay"><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option><option>Extra</option></select></label>
+    <label>Phone<input id="detailPhone" placeholder="Phone number" /></label>
+    <label>Website or ticket page<input id="detailWebsite" placeholder="https://..." /></label>
+    <label>Ticket price<input id="detailPrice" placeholder="Example: Adults $29, Kids $18" /></label>
+    <button id="saveDetailsBtn" value="default" class="primary full">Save</button>
+  </form></dialog>
 
-  <dialog id="settingsDialog">
-    <form method="dialog" class="dialog-card">
-      <button class="close" aria-label="Close">✕</button>
-      <h2>Settings</h2>
-      <label>Trip name
-        <input id="titleInput" />
-      </label>
-      <label>Starting location
-        <input id="startInput" value="Grand Country Resort, Branson, Missouri" />
-      </label>
-      <p class="small">Destination search uses OpenStreetMap. Route optimization uses the free OSRM routing service. Contact and ticket prices can be saved on each stop.</p>
-      <button id="saveSettingsBtn" value="default" class="primary full">Save</button>
-      <button id="clearBtn" type="button" class="danger full">Clear Trip</button>
-    </form>
-  </dialog>
+  <dialog id="settingsDialog"><form method="dialog" class="dialog-card">
+    <button class="close" aria-label="Close">✕</button><h2>Settings</h2>
+    <label>Trip name<input id="titleInput" /></label>
+    <label>Starting location<input id="startInput" value="Grand Country Resort, Branson, Missouri" /></label>
+    <button id="saveSettingsBtn" value="default" class="primary full">Save</button>
+    <button id="resetPlanBtn" type="button" class="secondary full">Reload Branson Itinerary</button>
+    <button id="clearBtn" type="button" class="danger full">Clear Trip</button>
+  </form></dialog>
 
   <script src="app.js"></script>
 </body>
